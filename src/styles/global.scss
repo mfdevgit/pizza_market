@@ -1,0 +1,17 @@
+@import './variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    @include flex($direction: column, $justify: center, $align: center);
+    width: 100%;
+    min-height: 100vh;
+    main {
+        flex: 1 0;
+        padding: 50px 25px;
+    }
+}

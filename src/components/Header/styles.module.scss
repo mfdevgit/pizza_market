@@ -1,0 +1,31 @@
+@import '../../styles/variables';
+
+header {
+    @include flex($display: flex, $justify: space-evenly, $align: center);
+    width: 100%;
+    flex: 0 0 100px;
+    background-color: $gray;
+    .nav_categories {
+        @include flex($display: inline-flex, $justify: center, $align: center, $gap: 20px);
+        list-style: none;
+        li {
+            a {
+                @include font;
+                padding: 10px;
+                transition: all 150ms ease;
+                &:hover {
+                    color: $orange;
+                }
+            }
+        }
+    }
+    > button {
+        @include font($color: $white);
+        padding: 10px;
+        background-color: $orange;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}

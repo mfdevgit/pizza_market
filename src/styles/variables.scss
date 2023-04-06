@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+$orange: hsl(25, 100%, 50%);
+$white: hsl(0, 100%, 100%);
+$gray: hsl(240, 20%, 96%);
+$black: hsl(0, 0%, 0%);
+
+@mixin flex($display: flex, $direction: row, $justify: flex-start, $align: flex-start, $gap: 0) {
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin font($color: $black, $size: 16px, $weight: normal, $decoration: none) {
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $size * 1.5;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: $decoration;
+}
