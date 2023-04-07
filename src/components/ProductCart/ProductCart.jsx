@@ -1,15 +1,33 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addProduct } from '../../redux/slices/basket.js'
 import styles from './styles.module.scss'
 
-export default function ProductCart() {
+export default function ProductCart(props) {
+    const dispatch = useDispatch()
+
+    const handleAddToCart = () => {
+        dispatch(
+            addProduct({
+                id: props.id,
+                title: props.title,
+                description: props.description,
+                image: props.image,
+                price: props.price
+            })
+        )
+    }
+
     return (
         <div className={styles.product_cart}>
-            <img src='https://dodopizza-a.akamaihd.net/static/Img/Products/02ca2561953b488993878d1f70e359de_292x292.webp' alt='картинка' />
-            <h6>Название продукта</h6>
-            <p>Краткое описание продукта с коротким перечислением ингредиентов</p>
             <div>
-                <span>Цена</span>
-                <button>Добавить</button>
+                <img src={props.image} alt='картинка' />
+                <h6>{props.title}</h6>
+                <p>{props.description}</p>
+            </div>
+            <div>
+                <span>{props.price} ₽</span>
+                <button onClick={handleAddToCart}>Добавить</button>
             </div>
         </div>
     )

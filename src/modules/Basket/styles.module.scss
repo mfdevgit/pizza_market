@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.basket {
+    @include flex($direction: column, $align: center, $gap: 20px);
+    position: fixed;
+    top: 0;
+    right: -420px;
+    z-index: 2;
+    width: 420px;
+    height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: $gray;
+    transition: all 300ms ease;
+    &.open {
+        right: 0;
+    }
+    .empty {
+        @include font($size: 14px, $align: center);
+        margin-top: 40vh;
+    }
+}

@@ -4,20 +4,23 @@ $orange: hsl(25, 100%, 50%);
 $white: hsl(0, 100%, 100%);
 $gray: hsl(240, 20%, 96%);
 $black: hsl(0, 0%, 0%);
+$black_opacity: hsla(0, 0%, 0%, 0.75);
 
-@mixin flex($display: flex, $direction: row, $justify: flex-start, $align: flex-start, $gap: 0) {
+@mixin flex($display: flex, $direction: row, $wrap: nowrap, $justify: flex-start, $align: flex-start, $gap: 0) {
     display: $display;
     flex-direction: $direction;
+    flex-wrap: $wrap;
     justify-content: $justify;
     align-items: $align;
     gap: $gap;
 }
 
-@mixin font($color: $black, $size: 16px, $weight: normal, $decoration: none) {
+@mixin font($color: $black, $size: 16px, $weight: normal, $decoration: none, $align: left) {
     color: $color;
     font-size: $size;
     font-weight: $weight;
     line-height: $size * 1.5;
     font-family: 'Roboto', sans-serif;
     text-decoration: $decoration;
+    text-align: $align;
 }

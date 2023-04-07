@@ -1,0 +1,48 @@
+@import '../../styles/variables.scss';
+
+.basket_item {
+    width: 100%;
+    padding: 10px 20px 10px 10px;
+    border-radius: 5px;
+    background-color: $white;
+    > div {
+        &:first-child {
+            @include flex($align: center, $gap: 10px);
+            img {
+                flex: 0 0 50px;
+                width: 50px;
+            }
+            > div {
+                flex: 1 0;
+                strong {
+                    @include font($size: 14px, $weight: bold);
+                    display: block;
+                }
+                span {
+                    @include font($size: 12px);
+                    display: block;
+                }
+            }
+            svg {
+                flex: 0 0 30px;
+                padding: 10px;
+                background: $gray;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button {
+                @include font($size: 10px);
+                flex: 0 0;
+                padding: 5px;
+                background: $gray;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+        &:last-child {
+            @include flex($justify: space-between, $align: center);
+        }
+    }
+}

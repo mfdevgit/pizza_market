@@ -1,0 +1,5 @@
+@import '../../styles/variables.scss';
+
+.products_container {
+    @include flex($wrap: wrap, $align: stretch, $gap: 30px);
+}

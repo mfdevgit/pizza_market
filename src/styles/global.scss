@@ -8,10 +8,19 @@
 
 .app {
     @include flex($direction: column, $justify: center, $align: center);
+    position: relative;
     width: 100%;
     min-height: 100vh;
+    // overflow-x: hidden;
     main {
+        max-width: 950px;
         flex: 1 0;
         padding: 50px 25px;
+        .products {
+            h2 {
+                @include font($size: 24px);
+                margin-bottom: 50px;
+            }
+        }
     }
 }

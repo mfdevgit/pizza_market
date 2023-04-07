@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+
+header {
+    width: 100%;
+    flex: 0 0;
+    padding: 25px;
+    background-color: $gray;
+    > div {
+        @include flex($display: flex, $justify: space-between, $align: center);
+        max-width: 950px;
+        margin: 0 auto;
+        .logotype {
+            width: 50px;
+            height: 50px;
+            background: url('./truck.png') center / 50px no-repeat;
+        }
+        .nav_categories {
+            @include flex($display: inline-flex, $justify: center, $align: center, $gap: 20px);
+            list-style: none;
+            li {
+                a {
+                    @include font;
+                    padding: 10px;
+                    transition: all 150ms ease;
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+            }
+        }
+        > button {
+            @include font($color: $white);
+            padding: 10px 10px 10px 40px;
+            background: $orange url('./basket.svg') no-repeat 10px center / 20px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,9 +1,10 @@
 import React from 'react'
+import styles from './styles.module.scss'
 
 export default function About() {
     return (
-        <div>
-            <p>about</p>
+        <div className='about'>
+            <p></p>
         </div>
     )
 }
