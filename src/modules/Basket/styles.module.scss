@@ -1,7 +1,7 @@
 @import '../../styles/variables.scss';
 
 .basket {
-    @include flex($direction: column, $align: center, $gap: 20px);
+    @include flex($wrap: wrap, $justify: center, $gap: 20px);
     position: fixed;
     top: 0;
     right: -420px;
@@ -15,8 +15,25 @@
     &.open {
         right: 0;
     }
+    .basket_items {
+        width: 100%;
+        div + div {
+            margin-top: 20px;
+        }
+    }
     .empty {
-        @include font($size: 14px, $align: center);
-        margin-top: 40vh;
+        align-self: center;
+        width: 100%;
+        svg {
+            width: 60%;
+            margin: 0 20%;
+            path {
+                fill: $white;
+            }
+        }
+        p {
+            @include font($size: 14px, $align: center);
+            margin-top: 20px;
+        }
     }
 }

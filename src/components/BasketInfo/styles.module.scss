@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.basket_info {
+    align-self: flex-end;
+    width: 100%;
+    p {
+        & + p {
+            margin-top: 10px;
+        }
+        strong {
+            @include font($weight: bold, $align: center);
+        }
+        span {
+            @include font;
+            float: right;
+        }
+    }
+    button {
+        @include font($color: $white, $align: center);
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: $orange;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}

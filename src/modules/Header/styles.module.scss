@@ -29,13 +29,19 @@ header {
             }
         }
         > button {
+            @include flex($display: inline-flex, $justify: center, $align: center, $gap: 15px);
             @include font($color: $white);
-            padding: 10px 10px 10px 40px;
-            background: $orange url('./basket.svg') no-repeat 10px center / 20px;
+            padding: 10px 15px;
+            background: $orange;
             border: none;
             outline: none;
             border-radius: 5px;
             cursor: pointer;
+            span {
+                @include font($color: $white);
+                padding-left: 15px;
+                border-left: 1px solid $gray;
+            }
         }
     }
 }

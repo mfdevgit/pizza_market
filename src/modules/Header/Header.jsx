@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export default function Header({ setIsBasketOpen }) {
+    const totalProducts = useSelector(state => state.basket.total.products)
     return (
         <header>
             <div className='wrapper'>
@@ -21,7 +23,7 @@ export default function Header({ setIsBasketOpen }) {
                         <Link to='/drinks'>Напитки</Link>
                     </li>
                 </ul>
-                <button onClick={() => setIsBasketOpen(true)}>Корзина</button>
+                <button onClick={() => setIsBasketOpen(true)}>Корзина {totalProducts > 0 && <span>{totalProducts}</span>}</button>
             </div>
         </header>
     )

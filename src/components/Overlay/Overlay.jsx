@@ -8,7 +8,7 @@ export default function Component({ isBasketOpen, setIsBasketOpen }) {
         setTimeout(() => {
             overlay.current.classList.toggle(styles.open)
         }, 0)
-    }, [])
+    }, [isBasketOpen])
 
     const handleOverlayClick = () => {
         setIsBasketOpen(!isBasketOpen)

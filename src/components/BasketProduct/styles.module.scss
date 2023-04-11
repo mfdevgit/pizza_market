@@ -23,26 +23,27 @@
                     display: block;
                 }
             }
-            svg {
-                flex: 0 0 30px;
-                padding: 10px;
-                background: $gray;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            button {
-                @include font($size: 10px);
-                flex: 0 0;
-                padding: 5px;
-                background: $gray;
-                border: none;
-                outline: none;
-                border-radius: 5px;
-                cursor: pointer;
-            }
         }
         &:last-child {
             @include flex($justify: space-between, $align: center);
+            margin-top: 20px;
+            > strong {
+                @include font($size: 14px, $weight: bold);
+            }
+            .basket_item_amount {
+                @include flex($align: center, $gap: 15px);
+                > svg {
+                    @include font($size: 12px, $weight: bold);
+                    flex: 1 0 40px;
+                    padding: 15px;
+                    border-radius: 50%;
+                    background: $gray;
+                    cursor: pointer;
+                }
+                > strong {
+                    @include font($size: 14px, $weight: bold);
+                }
+            }
         }
     }
 }

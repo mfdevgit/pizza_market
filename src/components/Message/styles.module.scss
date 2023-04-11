@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.message {
+    @include font($align: center);
+    position: absolute;
+    top: 30%;
+    left: calc(50% - 125px);
+    width: 250px;
+    padding: 15px;
+    background-color: $gray;
+    border-radius: 5px;
+}

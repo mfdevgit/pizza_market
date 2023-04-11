@@ -24,5 +24,5 @@ export default function Products(props) {
             category = null
             break
     }
-    return <div className='products'>{category}</div>
+    return <div className={styles.products}>{category}</div>
 }

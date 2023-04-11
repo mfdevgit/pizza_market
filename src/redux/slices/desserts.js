@@ -4,22 +4,22 @@ import { fetchDesserts } from '../../api/data.js'
 const dessertsSlice = createSlice({
     name: 'desserts',
     initialState: {
-        items: [],
+        data: [],
         status: 'loading'
     },
     reducers: {},
     extraReducers: builder => {
         builder
             .addCase(fetchDesserts.pending, state => {
-                state.items = []
+                state.data = []
                 state.status = 'loading'
             })
             .addCase(fetchDesserts.fulfilled, (state, action) => {
-                state.items = action.payload
+                state.data = action.payload
                 state.status = 'loaded'
             })
             .addCase(fetchDesserts.rejected, state => {
-                state.items = []
+                state.data = []
                 state.status = 'rejected'
             })
     }
