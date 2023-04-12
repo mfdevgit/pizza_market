@@ -4,17 +4,20 @@ import { addProduct } from '../../redux/slices/basket.js'
 import styles from './styles.module.scss'
 
 export default function ProductCart(props) {
+    const { id, title, description, image, price, category, size, macronutrients } = props
     const block = useRef()
     const dispatch = useDispatch()
 
     const handleAddToCart = () => {
         dispatch(
             addProduct({
-                id: props.id,
-                title: props.title,
-                description: props.description,
-                image: props.image,
-                price: props.price
+                id,
+                image,
+                title,
+                price,
+                category,
+                size,
+                macronutrients
             })
         )
     }
@@ -26,12 +29,12 @@ export default function ProductCart(props) {
     return (
         <div ref={block} className={styles.product_cart}>
             <div>
-                <img src={props.image} alt='картинка' onLoad={loadContent} />
-                <h6>{props.title}</h6>
-                <p>{props.description}</p>
+                <img src={`./images/${category}/${image}`} alt='картинка' onLoad={loadContent} />
+                <h6>{title}</h6>
+                <p>{description}</p>
             </div>
             <div>
-                <span>{props.price} ₽</span>
+                <span>{price} ₽</span>
                 <button onClick={handleAddToCart}>Добавить</button>
             </div>
         </div>

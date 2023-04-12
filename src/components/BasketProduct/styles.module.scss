@@ -9,6 +9,7 @@
         &:first-child {
             @include flex($align: center, $gap: 10px);
             img {
+                align-self: flex-start;
                 flex: 0 0 50px;
                 width: 50px;
             }
@@ -26,7 +27,7 @@
         }
         &:last-child {
             @include flex($justify: space-between, $align: center);
-            margin-top: 20px;
+            margin-top: 10px;
             > strong {
                 @include font($size: 14px, $weight: bold);
             }

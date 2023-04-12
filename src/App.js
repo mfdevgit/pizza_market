@@ -17,7 +17,7 @@ export default function App() {
         <div className='app'>
             <Header setIsBasketOpen={setIsBasketOpen} />
             {isBasketOpen && <Overlay isBasketOpen={isBasketOpen} setIsBasketOpen={setIsBasketOpen} />}
-            {isBasketOpen && <Basket setIsBasketOpen={setIsBasketOpen} />}
+            {isBasketOpen && <Basket />}
             <main>
                 <Routes>
                     <Route path='/' />

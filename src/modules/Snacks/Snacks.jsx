@@ -12,6 +12,7 @@ export default function Pizzas() {
     React.useEffect(() => {
         dispatch(fetchSnacks())
     }, [dispatch])
+
     switch (snacks.status) {
         case 'loading':
             return <Loader />
@@ -21,16 +22,7 @@ export default function Pizzas() {
             return (
                 <div className={styles.products_container}>
                     {snacks.data.map(element => {
-                        return (
-                            <ProductCart
-                                key={element.id}
-                                id={element.id}
-                                title={element.title}
-                                description={element.description}
-                                price={element.price}
-                                image={`./images/snacks/${element.image}`}
-                            />
-                        )
+                        return <ProductCart key={element.id} {...element} />
                     })}
                 </div>
             )

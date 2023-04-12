@@ -17,7 +17,7 @@
     }
     .basket_items {
         width: 100%;
-        div + div {
+        > div + div {
             margin-top: 20px;
         }
     }

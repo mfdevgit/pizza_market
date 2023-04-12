@@ -22,16 +22,7 @@ export default function Pizzas() {
             return (
                 <div className={styles.products_container}>
                     {desserts.data.map(element => {
-                        return (
-                            <ProductCart
-                                key={element.id}
-                                id={element.id}
-                                title={element.title}
-                                description={element.description}
-                                price={element.price}
-                                image={`./images/desserts/${element.image}`}
-                            />
-                        )
+                        return <ProductCart key={element.id} {...element} />
                     })}
                 </div>
             )

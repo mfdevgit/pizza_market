@@ -21,7 +21,6 @@ export default function Products(props) {
             category = <Drinks />
             break
         default:
-            category = null
             break
     }
     return <div className={styles.products}>{category}</div>

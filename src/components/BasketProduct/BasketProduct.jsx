@@ -2,11 +2,29 @@ import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { incrementProduct, decrementProduct } from '../../redux/slices/basket.js'
 import { useDispatch, useSelector } from 'react-redux'
+import imagePizza from './icons/pizza.png'
+import imageSnack from './icons/snack.png'
+import imageDessert from './icons/dessert.png'
+import imageDrink from './icons/drink.png'
 
 export default function BasketProduct(props) {
-    const { id, title, description, image, price, count } = props.data
-
     const dispatch = useDispatch()
+    const { id, title, image, price, count, category } = props.data
+    let description
+    switch (category) {
+        case 'pizzas':
+            description = `${props.data.size}, ${props.data.dough} тесто`
+            break
+        case 'snacks':
+            description = `${props.data.size} гр.`
+            break
+        case 'desserts':
+            description = `${props.data.size} гр.`
+            break
+        case 'drinks':
+            description = `${props.data.size} мл.`
+            break
+    }
 
     const handleMinusClick = () => {
         dispatch(
@@ -29,7 +47,7 @@ export default function BasketProduct(props) {
     return (
         <div className={styles.basket_item}>
             <div>
-                <img src={image} />
+                <img src={`./images/${category}/${image}`} />
                 <div>
                     <strong>{title}</strong>
                     <span>{description}</span>

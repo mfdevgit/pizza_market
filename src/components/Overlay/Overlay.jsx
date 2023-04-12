@@ -10,9 +10,5 @@ export default function Component({ isBasketOpen, setIsBasketOpen }) {
         }, 0)
     }, [isBasketOpen])
 
-    const handleOverlayClick = () => {
-        setIsBasketOpen(!isBasketOpen)
-    }
-
-    return <div ref={overlay} className={styles.overlay} onClick={handleOverlayClick} />
+    return <div ref={overlay} className={styles.overlay} onClick={() => setIsBasketOpen(!isBasketOpen)} />
 }

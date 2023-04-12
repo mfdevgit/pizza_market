@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.basket_empty {
+    align-self: center;
+    width: 100%;
+    svg {
+        width: 60%;
+        margin: 0 20%;
+        path {
+            fill: $white;
+        }
+    }
+    p {
+        @include font($size: 14px, $align: center);
+        margin-top: 20px;
+    }
+}
