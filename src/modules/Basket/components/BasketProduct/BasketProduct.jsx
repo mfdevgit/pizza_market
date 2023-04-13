@@ -1,24 +1,26 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { incrementProduct, decrementProduct } from '../../redux/slices/basket.js'
+import { incrementProduct, decrementProduct } from '../../store/basket.js'
 import { useDispatch } from 'react-redux'
 
 export default function BasketProduct(props) {
     const dispatch = useDispatch()
-    const { id, title, image, price, count, category } = props.data
+    const { id, image, title, price, category, size, dough, count } = props.data
     let description
     switch (category) {
         case 'pizzas':
-            description = `${props.data.size}, ${props.data.dough} тесто`
+            const sizes = [25, 30, 35]
+            const doughs = ['традиционное', 'тонкое']
+            description = `${sizes[size]}, ${doughs[dough]} тесто`
             break
         case 'snacks':
-            description = `${props.data.size} гр.`
-            break
         case 'desserts':
-            description = `${props.data.size} гр.`
+            description = `${size} гр.`
             break
         case 'drinks':
-            description = `${props.data.size} мл.`
+            description = `${size} мл.`
+            break
+        default:
             break
     }
 
@@ -27,7 +29,9 @@ export default function BasketProduct(props) {
             decrementProduct({
                 id,
                 price,
-                count
+                count,
+                category,
+                ...(category === 'pizzas' && { size, dough })
             })
         )
     }
@@ -35,7 +39,9 @@ export default function BasketProduct(props) {
         dispatch(
             incrementProduct({
                 id,
-                price
+                price,
+                category,
+                ...(category === 'pizzas' && { size, dough })
             })
         )
     }
@@ -43,7 +49,7 @@ export default function BasketProduct(props) {
     return (
         <div className={styles.basket_item}>
             <div>
-                <img src={`./images/${category}/${image}`} />
+                <img src={`./images/${category}/${image}`} alt='картинка' />
                 <div>
                     <strong>{title}</strong>
                     <span>{description}</span>

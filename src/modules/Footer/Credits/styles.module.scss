@@ -1,0 +1,45 @@
+@import '/src/styles/variables.scss';
+
+.credits {
+    p {
+        @include font($align: center);
+        margin-bottom: 5px;
+    }
+    .links {
+        a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            & + a {
+                margin-left: 10px;
+            }
+            path {
+                transition: all 150ms ease;
+                fill: $black_opacity;
+            }
+            &[href^='https://github.com/']
+            {
+                &:hover {
+                    path {
+                        fill: hsl(265, 40%, 60%);
+                    }
+                }
+            }
+            &[href^='https://t.me/']
+            {
+                &:hover {
+                    path {
+                        fill: hsl(200, 50%, 60%);
+                    }
+                }
+            }
+            &[href^='mailto'] {
+                &:hover {
+                    path {
+                        fill: hsl(5, 50%, 60%);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct } from '../../redux/slices/basket.js'
+import { addProduct } from '../../../Basket/index.js'
 import styles from './styles.module.scss'
 
 export default function ProductCart(props) {
-    const { id, title, description, image, price, category, size, macronutrients } = props
+    const { id, title, description, image, price, category, size } = props
     const block = useRef()
     const dispatch = useDispatch()
 
@@ -16,8 +16,7 @@ export default function ProductCart(props) {
                 title,
                 price,
                 category,
-                size,
-                macronutrients
+                size
             })
         )
     }

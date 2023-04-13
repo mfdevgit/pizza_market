@@ -3,7 +3,7 @@
 header {
     width: 100%;
     flex: 0 0;
-    padding: 25px;
+    padding: 30px;
     background-color: $gray;
     > div {
         @include flex($display: flex, $justify: space-between, $align: center);
@@ -25,22 +25,30 @@ header {
                     &:hover {
                         color: $orange;
                     }
+                    &.active {
+                        color: $orange;
+                    }
                 }
             }
         }
         > button {
-            @include flex($display: inline-flex, $justify: center, $align: center, $gap: 15px);
+            @include flex($display: inline-flex, $justify: center, $align: center, $gap: 10px);
             @include font($color: $white);
-            padding: 10px 15px;
+            padding: 10px;
             background: $orange;
             border: none;
             outline: none;
             border-radius: 5px;
             cursor: pointer;
+            svg {
+                width: 20px;
+                path {
+                    fill: $white;
+                }
+            }
             span {
                 @include font($color: $white);
-                padding-left: 15px;
-                border-left: 1px solid $gray;
+                position: relative;
             }
         }
     }

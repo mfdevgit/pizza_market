@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
-import Header from './modules/Header/Header'
-import Basket from './modules/Basket/Basket'
-import Overlay from './components/Overlay/Overlay'
 import Products from './pages/Products/Products'
+import Header from './modules/Header/Header'
+import { Basket } from './modules/Basket/index'
+import Overlay from './components/Overlay/Overlay'
 import Footer from './modules/Footer/Footer'
-import styles from './styles/global.scss'
+import './styles/global.scss'
 import { useState } from 'react'
 
 export default function App() {
@@ -21,10 +21,10 @@ export default function App() {
             <main>
                 <Routes>
                     <Route path='/' />
-                    <Route path='/pizzas' element={<Products category='pizzas' />} />
-                    <Route path='/snacks' element={<Products category='snacks' />} />
-                    <Route path='/desserts' element={<Products category='desserts' />} />
-                    <Route path='/drinks' element={<Products category='drinks' />} />
+                    <Route path='/pizzas' element={<Products title='Пиццы' category='pizzas' />} />
+                    <Route path='/snacks' element={<Products title='Закуски' category='snacks' />} />
+                    <Route path='/desserts' element={<Products title='Десерты' category='desserts' />} />
+                    <Route path='/drinks' element={<Products title='Напитки' category='drinks' />} />
                 </Routes>
             </main>
             <Footer />

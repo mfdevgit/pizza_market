@@ -3,6 +3,7 @@
 footer {
     @include flex($display: flex, $justify: center, $align: center);
     width: 100%;
-    flex: 0 0 100px;
+    flex: 0 0 auto;
+    padding: 30px;
     background-color: $gray;
 }

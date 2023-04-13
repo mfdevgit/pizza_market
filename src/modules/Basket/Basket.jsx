@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './styles.module.scss'
-import BasketProduct from '../../components/BasketProduct/BasketProduct'
-import BasketInfo from '../../components/BasketInfo/BasketInfo'
-import BasketEmpty from '../../components/BasketEmpty/BasketEmpty'
+import BasketProduct from './components/BasketProduct/BasketProduct'
+import BasketInfo from './components/BasketInfo/BasketInfo'
+import BasketEmpty from './components/BasketEmpty/BasketEmpty'
 
 export default function Basket() {
     const products = useSelector(state => state.basket.data)
@@ -21,7 +21,11 @@ export default function Basket() {
                 <>
                     <div className={styles.basket_items}>
                         {products.map(element => {
-                            return <BasketProduct key={element.id} data={element} />
+                            if (element.category === 'pizzas') {
+                                return <BasketProduct key={`${element.id}_${element.size}_${element.dough}`} data={element} />
+                            } else {
+                                return <BasketProduct key={element.id} data={element} />
+                            }
                         })}
                     </div>
                     <BasketInfo />

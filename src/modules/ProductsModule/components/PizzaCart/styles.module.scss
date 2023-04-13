@@ -1,0 +1,68 @@
+@import '/src/styles/variables.scss';
+
+.pizza_cart {
+    @include flex($direction: column, $justify: space-between, $align: stretch, $gap: 10px);
+    flex: 0 0 280px;
+    padding: 20px;
+    opacity: 0;
+    transition: all 500ms ease;
+    &.loaded {
+        opacity: 1;
+    }
+    > div {
+        &.preview {
+            img {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            h6 {
+                @include font;
+                margin-bottom: 5px;
+            }
+            p {
+                @include font($size: 14px);
+            }
+        }
+        &.settings {
+            border-radius: 5px;
+            background: $gray;
+            padding: 5px;
+            div {
+                @include flex($align: center);
+                width: 100%;
+                & + div {
+                    margin-top: 10px;
+                }
+                > button {
+                    flex: 1 0;
+                    @include font($size: 14px, $align: center);
+                    padding: 5px 10px;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    &.active {
+                        background-color: $white;
+                    }
+                }
+            }
+        }
+        &.navigation {
+            @include flex($justify: space-between, $align: center);
+            margin-top: 5px;
+            span {
+                @include font($size: 14px, $weight: bold);
+                padding: 10px;
+            }
+            button {
+                @include font($color: $white, $size: 14px);
+                padding: 10px 15px;
+                background-color: $orange_lighter;
+                border: none;
+                outline: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}

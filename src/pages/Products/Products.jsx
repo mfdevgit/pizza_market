@@ -1,39 +1,14 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Pizzas from '../../modules/Pizzas/Pizzas'
-import Snacks from '../../modules/Snacks/Snacks'
-import Desserts from '../../modules/Desserts/Desserts'
-import Drinks from '../../modules/Drinks/Drinks'
-import styles from './styles.module.scss'
+import { ProductsModule } from '../../modules/ProductsModule/index.js'
 
-export default function Products(props) {
-    let category, title
-    switch (props.category) {
-        case 'pizzas':
-            category = <Pizzas />
-            title = 'Пиццы | ПиццаМаркет'
-            break
-        case 'snacks':
-            category = <Snacks />
-            title = 'Закуски | ПиццаМаркет'
-            break
-        case 'desserts':
-            category = <Desserts />
-            title = 'Десерты | ПиццаМаркет'
-            break
-        case 'drinks':
-            category = <Drinks />
-            title = 'Напитки | ПиццаМаркет'
-            break
-        default:
-            break
-    }
+export default function Products({ title, category }) {
     return (
         <>
             <Helmet>
-                <title>{title}</title>
+                <title>{`${title} | mfdevMarket`}</title>
             </Helmet>
-            <div className={styles.products}>{category}</div>
+            <ProductsModule category={category} />
         </>
     )
 }

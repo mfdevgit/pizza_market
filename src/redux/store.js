@@ -3,7 +3,7 @@ import { pizzasReducer } from './slices/pizzas'
 import { snacksReducer } from './slices/snacks'
 import { dessertsReducer } from './slices/desserts'
 import { drinksReducer } from './slices/drinks'
-import { basketReducer } from './slices/basket'
+import { basketReducer } from '../modules/Basket/index.js'
 
 const store = configureStore({
     reducer: {
