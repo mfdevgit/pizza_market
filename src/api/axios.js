@@ -1,7 +1,8 @@
 import axios from 'axios'
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
 
 const instance = axios.create({
-    baseURL: 'https://mfdevbackbone.vercel.app'
+    baseURL: BACKEND_URL
 })
 
 export default instance
