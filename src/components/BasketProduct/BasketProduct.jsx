@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './styles.module.scss'
 import { incrementProduct, decrementProduct } from '../../redux/slices/basket.js'
-import { useDispatch, useSelector } from 'react-redux'
-import imagePizza from './icons/pizza.png'
-import imageSnack from './icons/snack.png'
-import imageDessert from './icons/dessert.png'
-import imageDrink from './icons/drink.png'
+import { useDispatch } from 'react-redux'
 
 export default function BasketProduct(props) {
     const dispatch = useDispatch()
