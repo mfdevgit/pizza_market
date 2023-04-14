@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-y: scroll;
+}
+
 .app {
     @include flex($direction: column, $justify: center, $align: center);
     position: relative;

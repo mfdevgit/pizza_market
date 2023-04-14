@@ -30,13 +30,17 @@
             padding: 10px;
         }
         button {
-            @include font($size: 14px);
+            @include font($color: $white, $size: 14px);
             padding: 10px 15px;
-            background-color: $gray;
+            background-color: $orange_lighter;
             border: none;
             outline: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: all 300ms ease;
+            &.clicked {
+                background-color: $orange;
+            }
         }
     }
 }

@@ -1,23 +1,37 @@
+import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Products from './pages/Products/Products'
-import Header from './modules/Header/Header'
+import { Header } from './modules/Header/index'
 import { Basket } from './modules/Basket/index'
-import Overlay from './components/Overlay/Overlay'
 import Footer from './modules/Footer/Footer'
 import './styles/global.scss'
-import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { setDeviceWidth } from './redux/slices/settings'
 
 export default function App() {
     const [isBasketOpen, setIsBasketOpen] = useState(false)
-    isBasketOpen
-        ? (document.body.style.cssText = 'overflow-y: hidden; margin-right: 17px;')
-        : (document.body.style.cssText = 'overflow-y: auto; margin-right: auto;')
+    const [isDesktop, setIsDesktop] = useState(true)
+
+    const dispatch = useDispatch()
+    useEffect(() => {
+        const handleResize = () => {
+            dispatch(setDeviceWidth(window.innerWidth))
+            setIsDesktop(window.innerWidth >= 800)
+        }
+        window.addEventListener('resize', handleResize)
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [dispatch])
+    useEffect(() => {
+        dispatch(setDeviceWidth(window.innerWidth))
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className='app'>
             <Header setIsBasketOpen={setIsBasketOpen} />
-            {isBasketOpen && <Overlay isBasketOpen={isBasketOpen} setIsBasketOpen={setIsBasketOpen} />}
-            {isBasketOpen && <Basket />}
+            <Basket isBasketOpen={isBasketOpen} setIsBasketOpen={setIsBasketOpen} />
             <main>
                 <Routes>
                     <Route path='/' />
@@ -27,7 +41,7 @@ export default function App() {
                     <Route path='/drinks' element={<Products title='Напитки' category='drinks' />} />
                 </Routes>
             </main>
-            <Footer />
+            {isDesktop && <Footer />}
         </div>
     )
 }

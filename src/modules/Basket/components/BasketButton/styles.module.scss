@@ -1,0 +1,21 @@
+@import '/src/styles/variables';
+
+.basket_button {
+    @include flex($display: inline-flex, $justify: center, $align: center, $gap: 10px);
+    @include font($color: $white);
+    padding: 10px 15px;
+    background: $orange;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    svg {
+        width: 20px;
+        path {
+            fill: $gray;
+        }
+    }
+    span {
+        @include font($color: $white);
+    }
+}

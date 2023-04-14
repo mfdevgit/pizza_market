@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { fetchDrinks } from '../../api/data.js'
+import { fetchSnacks } from '../api/data.js'
 
-const drinksSlice = createSlice({
-    name: 'drinks',
+const snacksSlice = createSlice({
+    name: 'snacks',
     initialState: {
         data: [],
         status: 'loading'
@@ -10,19 +10,19 @@ const drinksSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase(fetchDrinks.pending, state => {
+            .addCase(fetchSnacks.pending, state => {
                 state.data = []
                 state.status = 'loading'
             })
-            .addCase(fetchDrinks.fulfilled, (state, action) => {
+            .addCase(fetchSnacks.fulfilled, (state, action) => {
                 state.data = action.payload
                 state.status = 'loaded'
             })
-            .addCase(fetchDrinks.rejected, state => {
+            .addCase(fetchSnacks.rejected, state => {
                 state.data = []
                 state.status = 'rejected'
             })
     }
 })
 
-export const drinksReducer = drinksSlice.reducer
+export const snacksReducer = snacksSlice.reducer

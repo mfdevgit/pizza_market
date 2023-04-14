@@ -1,9 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { pizzasReducer } from './slices/pizzas'
-import { snacksReducer } from './slices/snacks'
-import { dessertsReducer } from './slices/desserts'
-import { drinksReducer } from './slices/drinks'
+import { pizzasReducer, snacksReducer, dessertsReducer, drinksReducer } from '../modules/ProductsModule/index'
 import { basketReducer } from '../modules/Basket/index.js'
+import { settingsReducer } from './slices/settings'
 
 const store = configureStore({
     reducer: {
@@ -11,7 +9,8 @@ const store = configureStore({
         snacks: snacksReducer,
         desserts: dessertsReducer,
         drinks: drinksReducer,
-        basket: basketReducer
+        basket: basketReducer,
+        settings: settingsReducer
     }
 })
 

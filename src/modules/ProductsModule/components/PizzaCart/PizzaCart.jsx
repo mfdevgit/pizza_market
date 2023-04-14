@@ -7,8 +7,8 @@ export default function PizzaCart(props) {
     const { id, title, description, image, price, category } = props
     const [dough, setDough] = useState(0)
     const [size, setSize] = useState(1)
-
     const block = useRef()
+    const adding = useRef()
     const dispatch = useDispatch()
 
     const handleAddToCart = () => {
@@ -23,6 +23,10 @@ export default function PizzaCart(props) {
                 size
             })
         )
+        adding.current.classList.add(styles.clicked)
+        setTimeout(() => {
+            adding.current.classList.remove(styles.clicked)
+        }, 300)
     }
 
     return (
@@ -55,7 +59,9 @@ export default function PizzaCart(props) {
             </div>
             <div className={styles.navigation}>
                 <span>{price[size]} ₽</span>
-                <button onClick={handleAddToCart}>Добавить</button>
+                <button ref={adding} onClick={handleAddToCart}>
+                    Добавить
+                </button>
             </div>
         </div>
     )

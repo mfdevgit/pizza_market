@@ -41,6 +41,7 @@
                     outline: none;
                     border-radius: 5px;
                     cursor: pointer;
+                    transition: all 200ms ease;
                     &.active {
                         background-color: $white;
                     }
@@ -62,6 +63,10 @@
                 outline: none;
                 border-radius: 5px;
                 cursor: pointer;
+                transition: all 300ms ease;
+                &.clicked {
+                    background-color: $orange;
+                }
             }
         }
     }
