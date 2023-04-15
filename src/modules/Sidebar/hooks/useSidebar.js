@@ -15,16 +15,14 @@ export default function useSidebar() {
 
     useEffect(() => {
         let scrollbar = window.innerWidth - document.documentElement.clientWidth
+        const app = document.querySelector('.app')
         if (isSidebarOpen) {
             setTimeout(() => {
                 overlayRef.current.classList.add(styles.open)
                 sidebarRef.current.classList.add(styles.open)
-                document.body.style.marginRight = `${scrollbar}px`
-                document.body.style.overflowY = 'hidden'
+                app.style.marginRight = `${scrollbar}px`
+                app.style.overflowY = 'auto'
             }, 0)
-        } else {
-            document.body.style.marginRight = 'auto'
-            document.body.style.overflowY = 'scroll'
         }
     }, [isSidebarOpen])
 

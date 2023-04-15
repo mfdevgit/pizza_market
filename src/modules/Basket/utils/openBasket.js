@@ -6,10 +6,11 @@ export default function openBasket(dispatch) {
     let scrollbar = window.innerWidth - document.documentElement.clientWidth
     const overlay = document.querySelector(`.${styles.overlay}`)
     const basket = document.querySelector(`.${styles.basket}`)
+    const app = document.querySelector('.app')
     if (overlay && basket) {
         overlay.classList.add(styles.open)
         basket.classList.add(styles.open)
-        document.body.style.marginRight = `${scrollbar}px`
-        document.body.style.overflowY = 'hidden'
+        app.style.marginRight = `${scrollbar}px`
+        app.style.overflowY = 'auto'
     }
 }

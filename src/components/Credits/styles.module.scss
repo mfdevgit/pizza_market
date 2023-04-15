@@ -1,11 +1,13 @@
 @import '/src/styles/variables.scss';
 
 .credits {
+    width: max-content;
+    margin: 0 auto;
     p {
         @include font($align: center);
         margin-bottom: 5px;
     }
-    .links {
+    > div {
         a {
             display: inline-block;
             width: 40px;
