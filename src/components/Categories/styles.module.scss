@@ -1,0 +1,46 @@
+@import '/src/styles/variables';
+
+.categories {
+    &.mobile {
+        @include flex($wrap: wrap, $justify: center, $gap: 20px);
+        a {
+            @include flex($direction: column, $align: center, $gap: 20px);
+            width: calc((100% - 20px) / 2);
+            padding: 10px;
+            transition: all 150ms ease;
+            text-decoration: none;
+            &:hover,
+            &.active {
+                span {
+                    color: $orange;
+                }
+            }
+            span {
+                @include font($align: center);
+                display: block;
+            }
+            img {
+                width: 50px;
+                margin: 0 auto;
+            }
+        }
+    }
+    &.desktop {
+        @include flex($justify: center, $align: center, $gap: 20px);
+        a {
+            @include font;
+            padding: 10px;
+            transition: all 150ms ease;
+            text-decoration: none;
+            &:hover,
+            &.active {
+                span {
+                    color: $orange;
+                }
+            }
+            span {
+                @include font;
+            }
+        }
+    }
+}

@@ -1,41 +1,18 @@
-import React, { useEffect, useRef } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 import BasketProduct from './components/BasketProduct/BasketProduct'
 import BasketInfo from './components/BasketInfo/BasketInfo'
 import BasketEmpty from './components/BasketEmpty/BasketEmpty'
+import useBasket from './hooks/useBasket'
 import styles from './styles.module.scss'
 
-export default function Basket({ isBasketOpen, setIsBasketOpen }) {
-    const products = useSelector(state => state.basket.data)
-    const basket = useRef()
-    const overlay = useRef()
-
-    const closeBasket = () => {
-        overlay.current.classList.remove(styles.open)
-        basket.current.classList.remove(styles.open)
-        setTimeout(() => {
-            setIsBasketOpen(false)
-        }, 300)
-    }
-
-    useEffect(() => {
-        let scrollbar = window.innerWidth - document.documentElement.clientWidth
-        if (isBasketOpen) {
-            setTimeout(() => {
-                overlay.current.classList.add(styles.open)
-                basket.current.classList.add(styles.open)
-                document.body.style = { marginRight: `${scrollbar}px`, overflowY: 'hidden' }
-            }, 0)
-        } else if (!isBasketOpen) {
-            document.body.style = { marginRight: 'auto', overflowY: 'scroll' }
-        }
-    }, [isBasketOpen])
+export default function Basket() {
+    const { overlayRef, basketRef, products, isBasketOpen, closeBasket } = useBasket()
 
     return (
         isBasketOpen && (
             <>
-                <div ref={overlay} className={styles.overlay} onClick={closeBasket} />
-                <section ref={basket} className={styles.basket}>
+                <div ref={overlayRef} className={styles.overlay} onClick={closeBasket} />
+                <section ref={basketRef} className={styles.basket}>
                     {products.length > 0 ? (
                         <>
                             <div className={styles.basket_items}>

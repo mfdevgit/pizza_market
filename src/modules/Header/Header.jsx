@@ -1,34 +1,39 @@
 import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import Navigation from './components/Navigation/Navigation'
-import styles from './styles.module.scss'
+import { Link } from 'react-router-dom'
 import { BasketButton } from '../Basket/index'
+import { SidebarButton } from '../Sidebar/index'
+import Categories from '../../components/Categories/Categories'
+import styles from './styles.module.scss'
 
-export default function Header({ setIsBasketOpen }) {
-    const device = useSelector(state => state.settings.device)
-    const logotype = useRef()
+export default function Header() {
+    const deviceType = useSelector(state => state.settings.deviceType)
+    const logotypeLink = useRef()
 
     const handleLogotypeClick = () => {
-        logotype.current.classList.add(styles.clicked)
+        logotypeLink.current.classList.add(styles.clicked)
         setTimeout(() => {
-            logotype.current.classList.remove(styles.clicked)
+            logotypeLink.current.classList.remove(styles.clicked)
         }, 300)
     }
 
     return (
-        <header className={styles[device]}>
-            {device === 'desktop' && (
+        <header className={styles[deviceType]}>
+            {deviceType === 'desktop' && (
                 <div className={styles.wrapper}>
-                    <Link to='/' className={styles.logotype} ref={logotype} onClick={handleLogotypeClick} />
-                    <Navigation device='desktop' />
-                    <BasketButton setIsBasketOpen={setIsBasketOpen} />
+                    <Link to='/' className={styles.logotype} ref={logotypeLink} onClick={handleLogotypeClick} />
+                    <Categories deviceType='desktop' />
+                    <BasketButton deviceType={deviceType} />
                 </div>
             )}
-            {device === 'mobile' && (
-                <div className={styles.wrapper}>
-                    <Link to='/' className={styles.logotype} ref={logotype} onClick={handleLogotypeClick} />
-                </div>
+            {deviceType === 'mobile' && (
+                <>
+                    <Link to='/' className={styles.logotype} ref={logotypeLink} onClick={handleLogotypeClick} />
+                    <div className={styles.navigation_fixed}>
+                        <SidebarButton />
+                        <BasketButton deviceType={deviceType} />
+                    </div>
+                </>
             )}
         </header>
     )

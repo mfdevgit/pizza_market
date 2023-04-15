@@ -1,0 +1,18 @@
+@import '/src/styles/variables';
+
+.sidebar_btn {
+    @include flex($display: inline-flex, $justify: center, $align: center, $gap: 10px);
+    @include font;
+    width: 50%;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    svg {
+        width: 24px;
+        path {
+            fill: $gray_darker;
+        }
+    }
+}

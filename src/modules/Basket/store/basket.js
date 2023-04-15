@@ -70,5 +70,5 @@ const basketSlice = createSlice({
     }
 })
 
-export const { addProduct, addPizza, incrementProduct, decrementProduct, removeProduct } = basketSlice.actions
+export const { addProduct, addPizza, incrementProduct, decrementProduct } = basketSlice.actions
 export const basketReducer = basketSlice.reducer

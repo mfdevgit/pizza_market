@@ -25,14 +25,6 @@
                     }
                 }
             }
-            &[href^='https://t.me/']
-            {
-                &:hover {
-                    path {
-                        fill: hsl(200, 50%, 60%);
-                    }
-                }
-            }
             &[href^='mailto'] {
                 &:hover {
                     path {

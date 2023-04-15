@@ -26,14 +26,10 @@ export default function ProductCart(props) {
         }, 300)
     }
 
-    const loadContent = () => {
-        block.current.classList.add(styles.loaded)
-    }
-
     return (
         <div ref={block} className={styles.product_cart}>
             <div>
-                <img src={`./images/${category}/${image}`} alt='картинка' onLoad={loadContent} />
+                <img src={`./images/${category}/${image}`} alt='картинка' onLoad={() => block.current.classList.add(styles.loaded)} />
                 <h6>{title}</h6>
                 <p>{description}</p>
             </div>

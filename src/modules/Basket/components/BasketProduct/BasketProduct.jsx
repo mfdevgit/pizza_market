@@ -5,13 +5,14 @@ import { useDispatch } from 'react-redux'
 
 export default function BasketProduct(props) {
     const dispatch = useDispatch()
-    const { id, image, title, price, category, size, dough, count } = props.data
+    const { id, image, title, price, category, size, count } = props.data
+
     let description
     switch (category) {
         case 'pizzas':
             const sizes = [25, 30, 35]
             const doughs = ['традиционное', 'тонкое']
-            description = `${sizes[size]}, ${doughs[dough]} тесто`
+            description = `${sizes[size]}, ${doughs[props.data.dough]} тесто`
             break
         case 'snacks':
         case 'desserts':
@@ -31,7 +32,7 @@ export default function BasketProduct(props) {
                 price,
                 count,
                 category,
-                ...(category === 'pizzas' && { size, dough })
+                ...(category === 'pizzas' && { size, dough: props.data.dough })
             })
         )
     }
@@ -41,7 +42,7 @@ export default function BasketProduct(props) {
                 id,
                 price,
                 category,
-                ...(category === 'pizzas' && { size, dough })
+                ...(category === 'pizzas' && { size, dough: props.data.dough })
             })
         )
     }

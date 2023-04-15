@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from './styles.module.scss'
-import Credits from './Credits/Credits'
+import './styles.module.scss'
+import Credits from '../../components/Credits/Credits'
 
 export default function Footer() {
     return (

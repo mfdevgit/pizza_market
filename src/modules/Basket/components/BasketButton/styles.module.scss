@@ -1,21 +1,51 @@
 @import '/src/styles/variables';
 
-.basket_button {
-    @include flex($display: inline-flex, $justify: center, $align: center, $gap: 10px);
-    @include font($color: $white);
-    padding: 10px 15px;
-    background: $orange;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    cursor: pointer;
-    svg {
-        width: 20px;
-        path {
-            fill: $gray;
+.basket_btn {
+    &.mobile {
+        @include flex($justify: center, $align: center);
+        @include font;
+        position: relative;
+        width: 50%;
+        padding: 10px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        svg {
+            width: 30px;
+            path {
+                fill: $gray_darker;
+            }
+        }
+        span {
+            @include flex($justify: center, $align: center);
+            @include font($color: $white, $size: 12px, $weight: bold);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            width: 22px;
+            height: 22px;
+            border-radius: 10px;
+            background-color: red;
         }
     }
-    span {
-        @include font($color: $white);
+    &.desktop {
+        @include flex($justify: center, $align: center, $gap: 10px);
+        padding: 10px 15px;
+        background-color: $orange;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        cursor: pointer;
+        svg {
+            width: 20px;
+            path {
+                fill: $gray;
+            }
+        }
+        span {
+            @include font($color: $white, $size: 14px);
+        }
     }
 }

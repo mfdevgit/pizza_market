@@ -3,14 +3,22 @@ import { createSlice } from '@reduxjs/toolkit'
 const settingsSlice = createSlice({
     name: 'settings',
     initialState: {
-        device: 'mobile'
+        deviceType: 'mobile',
+        isBasketOpen: false,
+        isSidebarOpen: false
     },
     reducers: {
-        setDeviceWidth: (state, action) => {
-            state.device = action.payload < 800 ? 'mobile' : 'desktop'
+        setDeviceType: (state, action) => {
+            state.deviceType = action.payload
+        },
+        setIsBasketOpen: (state, action) => {
+            state.isBasketOpen = action.payload
+        },
+        setIsSidebarOpen: (state, action) => {
+            state.isSidebarOpen = action.payload
         }
     }
 })
 
-export const { setDeviceWidth } = settingsSlice.actions
+export const { setDeviceType, setIsBasketOpen, setIsSidebarOpen } = settingsSlice.actions
 export const settingsReducer = settingsSlice.reducer
