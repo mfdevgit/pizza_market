@@ -17,15 +17,17 @@ export default function App() {
             <Basket />
             <Sidebar />
             <main className={deviceType}>
-                <Routes>
-                    <Route path='/' />
-                    <Route path='/pizzas' element={<Products title='Пиццы' category='pizzas' />} />
-                    <Route path='/snacks' element={<Products title='Закуски' category='snacks' />} />
-                    <Route path='/desserts' element={<Products title='Десерты' category='desserts' />} />
-                    <Route path='/drinks' element={<Products title='Напитки' category='drinks' />} />
-                </Routes>
+                <div className='wrapper'>
+                    <Routes>
+                        <Route path='/' />
+                        <Route path='/pizzas' element={<Products title='Пиццы' category='pizzas' />} />
+                        <Route path='/snacks' element={<Products title='Закуски' category='snacks' />} />
+                        <Route path='/desserts' element={<Products title='Десерты' category='desserts' />} />
+                        <Route path='/drinks' element={<Products title='Напитки' category='drinks' />} />
+                    </Routes>
+                </div>
             </main>
-            {deviceType === 'desktop' && <Footer />}
+            <Footer />
         </div>
     )
 }

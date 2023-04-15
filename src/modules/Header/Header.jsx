@@ -1,8 +1,7 @@
 import React, { useRef } from 'react'
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import { BasketButton } from '../Basket/index'
-import { SidebarButton } from '../Sidebar/index'
 import Categories from '../../components/Categories/Categories'
 import styles from './styles.module.scss'
 
@@ -23,18 +22,10 @@ export default function Header() {
                 <div className={styles.wrapper}>
                     <Link to='/' className={styles.logotype} ref={logotypeLink} onClick={handleLogotypeClick} />
                     <Categories deviceType='desktop' />
-                    <BasketButton deviceType={deviceType} />
+                    <BasketButton deviceType='desktop' />
                 </div>
             )}
-            {deviceType === 'mobile' && (
-                <>
-                    <Link to='/' className={styles.logotype} ref={logotypeLink} onClick={handleLogotypeClick} />
-                    <div className={styles.navigation_fixed}>
-                        <SidebarButton />
-                        <BasketButton deviceType={deviceType} />
-                    </div>
-                </>
-            )}
+            {deviceType === 'mobile' && <Link to='/' className={styles.logotype} ref={logotypeLink} onClick={handleLogotypeClick} />}
         </header>
     )
 }

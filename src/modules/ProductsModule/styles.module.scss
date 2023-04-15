@@ -1,5 +1,10 @@
 @import '../../styles/variables.scss';
 
 .products {
-    @include flex($wrap: wrap, $justify: center, $align: stretch, $gap: 30px);
+    @media screen and (max-width: 720px) {
+        @include flex($wrap: wrap, $justify: center, $align: stretch, $gap: 30px);
+    }
+    @media screen and (min-width: 721px) {
+        @include flex($wrap: wrap, $justify: center, $align: stretch, $gap: 50px);
+    }
 }

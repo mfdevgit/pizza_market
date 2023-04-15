@@ -37,14 +37,4 @@ header {
             }
         }
     }
-    .navigation_fixed {
-        @include flex($align: stretch);
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        height: 60px;
-        background-color: $gray;
-    }
 }

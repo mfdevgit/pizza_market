@@ -7,8 +7,14 @@ import styles from './styles.module.scss'
 export default function Categories({ deviceType }) {
     const location = useLocation()
     const dispatch = useDispatch()
-    const handleLinkClick = () => {
-        closeSidebar(dispatch)
+    const handleLinkClick = e => {
+        const element = e.currentTarget
+        if (element) {
+            element.classList.add(styles.clicked)
+            setTimeout(() => {
+                closeSidebar(dispatch)
+            }, 150)
+        }
     }
 
     return (

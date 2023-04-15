@@ -29,10 +29,17 @@ body {
             flex: 1 0;
             height: 100%;
             &.desktop {
-                padding: 50px 25px;
+                padding: 60px 30px;
+                .wrapper {
+                    max-width: 1000px;
+                    margin: 0 auto;
+                }
             }
             &.mobile {
-                padding: 25px 25px 85px 25px;
+                padding: 20px 20px 80px 20px;
+                .wrapper {
+                    max-width: 100%;
+                }
             }
         }
     }
