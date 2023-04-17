@@ -1,0 +1,4 @@
+[
+    { "name": "PIZZA80", "description": "Скидка 20% на все пиццы!", "discount": 0.8 },
+    { "name": "GOODWORK", "description": "Корпоративная скидка 30% на весь ассортимент!", "discount": 0.7 }
+]

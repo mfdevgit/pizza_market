@@ -1,0 +1,30 @@
+@import '/src/styles/variables';
+
+.basket_stats {
+    & + div {
+        margin-top: 10px;
+    }
+    strong {
+        @include font($weight: bold, $align: center);
+    }
+    span {
+        @include font;
+        float: right;
+        &.old {
+            color: $gray_darker;
+            position: relative;
+            margin-right: 10px;
+            padding: 0 4px;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background-color: hsla(240, 20%, 95%, 0.5);
+                border-radius: 5px;
+            }
+        }
+    }
+}

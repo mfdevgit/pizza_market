@@ -6,19 +6,7 @@
     padding: 10px;
     background-color: $white;
     border-radius: 5px;
-    p {
-        & + p {
-            margin-top: 10px;
-        }
-        strong {
-            @include font($weight: bold, $align: center);
-        }
-        span {
-            @include font;
-            float: right;
-        }
-    }
-    button {
+    > button {
         @include font($color: $white, $align: center);
         width: 100%;
         margin-top: 20px;

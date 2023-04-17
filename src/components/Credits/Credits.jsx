@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 export default function Credits() {
     return (
         <div className={styles.credits}>
-            <p>mfdev</p>
+            {/* <p>mfdev</p> */}
             <div>
                 <a href='https://github.com/mfdevgit/pizza_market' target='_blanc'>
                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'>

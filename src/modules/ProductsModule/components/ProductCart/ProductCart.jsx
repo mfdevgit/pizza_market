@@ -1,44 +1,40 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addProduct } from '../../../Basket/index.js'
+import { addProduct } from '../../../Basket'
+import PizzaSettings from './components/PizzaSettings/PizzaSettings'
+import ProductAdding from './components/ProductAdding/ProductAdding'
+import { setAdditionalOptions } from './utils/setAdditionalOptions'
 import styles from './styles.module.scss'
 
-export default function ProductCart(props) {
-    const { id, title, description, image, price, category, size } = props
-    const block = useRef()
-    const adding = useRef()
+export default function ProductCart({ id, title, description, image, price, category, size }) {
     const dispatch = useDispatch()
+    const containerRef = useRef()
+    const [pizzaOptions, setPizzaOptions] = useState({
+        size: 1,
+        dough: 0,
+        price: price[1]
+    })
 
     const handleAddToCart = () => {
-        dispatch(
-            addProduct({
-                id,
-                image,
-                title,
-                price,
-                category,
-                size
-            })
-        )
-        adding.current.classList.add(styles.clicked)
-        setTimeout(() => {
-            adding.current.classList.remove(styles.clicked)
-        }, 300)
+        const defaultOptions = { id, image, title, category }
+        const additionalOptions = setAdditionalOptions({ category, price, size, pizzaOptions })
+        dispatch(addProduct({ ...defaultOptions, ...additionalOptions }))
+    }
+    const loadContainer = () => {
+        containerRef.current.classList.add(styles.loaded)
     }
 
     return (
-        <div ref={block} className={styles.product_cart}>
+        <div ref={containerRef} className={styles.product_cart}>
             <div>
-                <img src={`./images/${category}/${image}`} alt='картинка' onLoad={() => block.current.classList.add(styles.loaded)} />
+                <img src={`./images/${category}/${image}`} alt='картинка' onLoad={loadContainer} />
                 <h6>{title}</h6>
                 <p>{description}</p>
             </div>
-            <div>
-                <span>{price} ₽</span>
-                <button ref={adding} onClick={handleAddToCart}>
-                    Добавить
-                </button>
-            </div>
+
+            {category === 'pizzas' && <PizzaSettings price={price} pizzaOptions={pizzaOptions} setPizzaOptions={setPizzaOptions} />}
+
+            <ProductAdding price={category === 'pizzas' ? pizzaOptions.price : price} handleAddToCart={handleAddToCart} />
         </div>
     )
 }

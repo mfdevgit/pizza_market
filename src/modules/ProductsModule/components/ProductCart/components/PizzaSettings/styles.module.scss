@@ -1,0 +1,28 @@
+@import '/src/styles/variables.scss';
+
+.pizza_settings {
+    border-radius: 5px;
+    background: $gray;
+    margin-bottom: 20px;
+    padding: 5px;
+    div {
+        @include flex($align: center);
+        width: 100%;
+        & + div {
+            margin-top: 10px;
+        }
+        > button {
+            flex: 1 0;
+            @include font($size: 14px, $align: center);
+            padding: 5px 10px;
+            border: none;
+            outline: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 200ms ease;
+            &.active {
+                background-color: $white;
+            }
+        }
+    }
+}
