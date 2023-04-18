@@ -20,19 +20,19 @@ export default function Categories({ deviceType }) {
     return (
         <nav className={`${styles.categories} ${styles[deviceType]}`}>
             <Link to='/pizzas' className={location.pathname === '/pizzas' ? styles.active : undefined} onClick={handleLinkClick}>
-                {deviceType === 'mobile' && <img src='/images/icons/pizza.png' alt='картинка' />}
+                {deviceType === 'mobile' && <img src='/images/categories/pizza.png' alt='картинка' />}
                 <span>Пиццы</span>
             </Link>
             <Link to='/snacks' className={location.pathname === '/snacks' ? styles.active : undefined} onClick={handleLinkClick}>
-                {deviceType === 'mobile' && <img src='/images/icons/snack.png' alt='картинка' />}
+                {deviceType === 'mobile' && <img src='/images/categories/snack.png' alt='картинка' />}
                 <span>Закуски</span>
             </Link>
             <Link to='/desserts' className={location.pathname === '/desserts' ? styles.active : undefined} onClick={handleLinkClick}>
-                {deviceType === 'mobile' && <img src='/images/icons/dessert.png' alt='картинка' />}
+                {deviceType === 'mobile' && <img src='/images/categories/dessert.png' alt='картинка' />}
                 <span>Десерты</span>
             </Link>
             <Link to='/drinks' className={location.pathname === '/drinks' ? styles.active : undefined} onClick={handleLinkClick}>
-                {deviceType === 'mobile' && <img src='/images/icons/drink.png' alt='картинка' />}
+                {deviceType === 'mobile' && <img src='/images/categories/drink.png' alt='картинка' />}
                 <span>Напитки</span>
             </Link>
         </nav>

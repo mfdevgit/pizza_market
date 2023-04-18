@@ -50,7 +50,7 @@ export default function BasketProduct(props) {
     return (
         <div className={styles.basket_item}>
             <div>
-                <img src={`./images/${category}/${image}`} alt='картинка' />
+                <img src={`./images/products/${category}/${image}`} alt='картинка' />
                 <div>
                     <strong>{title}</strong>
                     <span>{description}</span>

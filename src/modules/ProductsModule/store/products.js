@@ -6,19 +6,19 @@ const productsSlice = createSlice({
     initialState: {
         pizzas: {
             data: [],
-            status: null
+            status: 'idle'
         },
         snacks: {
             data: [],
-            status: null
+            status: 'idle'
         },
         drinks: {
             data: [],
-            status: null
+            status: 'idle'
         },
         desserts: {
             data: [],
-            status: null
+            status: 'idle'
         }
     },
     reducers: {},

@@ -73,6 +73,9 @@ const setDiscountedPrice = (current, tech) => {
 const updateTotal = state => {
     state.total.price = state.data.reduce((sum, el) => sum + el.price * el.count, 0)
     state.total.products = state.data.reduce((sum, el) => sum + el.count, 0)
+    if (state.total.discount.status === 'loaded') {
+        state.total.discount.price = setDiscountedPrice(state.total.price, state.total.discount.data.tech)
+    }
 }
 
 export const { addProduct, addPizza, incrementProduct, decrementProduct } = basketSlice.actions

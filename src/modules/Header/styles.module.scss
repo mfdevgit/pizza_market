@@ -10,7 +10,7 @@ header {
         .logotype {
             width: 40px;
             height: 40px;
-            background: url('./assets/truck.png') center / 40px no-repeat;
+            background: url('./assets/truck.webp') center / 40px no-repeat;
             transition: all 300ms ease;
             &.clicked {
                 transform: rotate(360deg);
@@ -28,7 +28,7 @@ header {
                 width: 60px;
                 height: 60px;
                 border-radius: 50%;
-                background: url('./assets/truck.png') center / 40px no-repeat;
+                background: url('./assets/truck.webp') center / 40px no-repeat;
                 transition: all 300ms ease;
                 &.clicked {
                     transform: rotate(360deg);

@@ -27,7 +27,7 @@ export default function ProductCart({ id, title, description, image, price, cate
     return (
         <div ref={containerRef} className={styles.product_cart}>
             <div>
-                <img src={`./images/${category}/${image}`} alt='картинка' onLoad={loadContainer} />
+                <img src={`./images/products/${category}/${image}`} alt='картинка' onLoad={loadContainer} />
                 <h6>{title}</h6>
                 <p>{description}</p>
             </div>

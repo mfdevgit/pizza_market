@@ -18,7 +18,8 @@ export default function Basket() {
                             <div className={styles.basket_items}>
                                 {products.map(element => {
                                     if (element.category === 'pizzas') {
-                                        return <BasketProduct key={`${element.id}_${element.size}_${element.dough}`} data={element} />
+                                        const { id, size, dough } = element
+                                        return <BasketProduct key={`${id}_${size}_${dough}`} data={element} />
                                     } else {
                                         return <BasketProduct key={element.id} data={element} />
                                     }
