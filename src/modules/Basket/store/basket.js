@@ -45,7 +45,7 @@ const basketSlice = createSlice({
             .addCase(fetchDiscount.fulfilled, (state, action) => {
                 state.total.discount.data = action.payload
                 state.total.discount.status = 'loaded'
-                state.total.discount.price = setDiscountedPrice(state.total.price, action.payload.tech)
+                updateDiscountedPrice(state)
             })
             .addCase(fetchDiscount.rejected, state => {
                 state.total.discount.status = 'rejected'
@@ -61,20 +61,41 @@ const findProductIndex = (data, payload) => {
     }
 }
 
-const setDiscountedPrice = (current, tech) => {
-    switch (tech.type) {
-        case 'percent':
-            return Math.floor((current * (100 - tech.ratio)) / 100)
-        case 'fixed':
-            break
-    }
-}
-
 const updateTotal = state => {
     state.total.price = state.data.reduce((sum, el) => sum + el.price * el.count, 0)
     state.total.products = state.data.reduce((sum, el) => sum + el.count, 0)
     if (state.total.discount.status === 'loaded') {
-        state.total.discount.price = setDiscountedPrice(state.total.price, state.total.discount.data.tech)
+        updateDiscountedPrice(state)
+    }
+}
+
+const updateDiscountedPrice = state => {
+    const { price, discount } = state.total
+
+    // eslint-disable-next-line
+    switch (discount.data.tech.type) {
+        case 'percent':
+            if (discount.data.tech.category === 'all') {
+                discount.price = Math.floor((price * (100 - discount.data.tech.ratio)) / 100)
+            } else {
+                let sum = state.data.filter(el => el.category === discount.data.tech.category).reduce((sum, el) => sum + el.count * el.price, 0)
+                discount.price = price - Math.floor((sum * discount.data.tech.ratio) / 100)
+                return
+            }
+            break
+        case 'fix':
+            if (discount.data.tech.category === 'all') {
+                discount.price = price - discount.data.tech.ratio
+            } else {
+                let sum = state.data.filter(el => el.category === discount.data.tech.category).reduce((sum, el) => sum + el.count * el.price, 0)
+                if (sum <= discount.data.tech.ratio) {
+                    discount.price = price - sum
+                } else {
+                    discount.price = price - discount.data.tech.ratio
+                }
+                return
+            }
+            break
     }
 }
 

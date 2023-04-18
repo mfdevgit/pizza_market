@@ -17,6 +17,12 @@ export default function ProductsModule({ category }) {
         // eslint-disable-next-line
     }, [category])
 
+    const sortData = array => {
+        return array.sort((a, b) => (a.popularity > b.popularity ? -1 : 1))
+    }
+
+    let sorted = sortData([...data])
+
     switch (status) {
         case 'loading':
             return <Loader />
@@ -26,7 +32,7 @@ export default function ProductsModule({ category }) {
             return (
                 <div className={styles.products}>
                     <Suspense fallback={<Loader />}>
-                        {data.map(element => (
+                        {sorted.map(element => (
                             <ProductCart key={element.id} {...element} />
                         ))}
                     </Suspense>
