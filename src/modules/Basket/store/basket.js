@@ -9,6 +9,7 @@ const basketSlice = createSlice({
     },
     reducers: {
         addProduct: (state, action) => {
+            console.log(action.payload)
             const index = findProductIndex(state.data, action.payload)
             if (index !== -1) {
                 state.data[index].count += 1
