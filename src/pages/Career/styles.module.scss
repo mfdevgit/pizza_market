@@ -1,0 +1,7 @@
+@import '/src/styles/variables.scss';
+
+.career {
+    p {
+        @include font;
+    }
+}

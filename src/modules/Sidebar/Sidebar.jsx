@@ -3,6 +3,7 @@ import Categories from '../../components/Categories/Categories'
 import Credits from '../../components/Credits/Credits'
 import useSidebar from './hooks/useSidebar'
 import styles from './styles.module.scss'
+import Submenu from '../../components/Submenu/Submenu'
 
 export default function Sidebar() {
     const { overlayRef, sidebarRef, isSidebarOpen, handleSidebarClose } = useSidebar()
@@ -12,6 +13,7 @@ export default function Sidebar() {
             <div ref={overlayRef} className={styles.overlay} onClick={handleSidebarClose} />
             <div ref={sidebarRef} className={styles.sidebar}>
                 <Categories deviceType='mobile' />
+                <Submenu />
                 <Credits />
             </div>
         </>

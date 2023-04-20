@@ -1,0 +1,7 @@
+@import '/src/styles/variables.scss';
+
+.delivery {
+    p {
+        @include font;
+    }
+}

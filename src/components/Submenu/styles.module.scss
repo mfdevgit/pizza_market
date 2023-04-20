@@ -1,0 +1,14 @@
+@import '/src/styles/variables.scss';
+
+.submenu {
+    @include flex($direction: column, $align: center, $gap: 10px);
+    margin-top: 20px;
+    a {
+        @include font;
+        padding: 5px;
+        transition: all 150ms ease;
+        &.active {
+            color: $orange;
+        }
+    }
+}
