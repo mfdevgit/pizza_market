@@ -1,0 +1,58 @@
+@import '/src/styles/variables.scss';
+
+.discounts {
+    width: 100%;
+    &.mobile {
+        > .discount_cart {
+            width: 100%;
+            & + div {
+                margin-top: 30px;
+            }
+        }
+    }
+    &.desktop {
+        > .discount_cart {
+            width: 100%;
+            @include flex($direction: row, $gap: 20px);
+            div {
+                &:first-child {
+                    flex: 0 1 280px;
+                }
+                &:last-child {
+                    flex: 1 0 280px;
+                }
+            }
+            & + div {
+                margin-top: 40px;
+            }
+        }
+    }
+    img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+    h3 {
+        @include font($weight: bold);
+        margin-bottom: 10px;
+    }
+    p {
+        @include font($size: 14px);
+    }
+    ul {
+        margin-top: 10px;
+        padding-left: 10px;
+        list-style: none;
+        li {
+            @include font($size: 14px);
+            padding-left: 27px;
+            background-image: url('./assets/images/list_marker.svg');
+            background-position: 0px 2px;
+            background-repeat: no-repeat;
+            background-size: 17px 17px;
+            & + li {
+                margin-top: 10px;
+            }
+        }
+    }
+}

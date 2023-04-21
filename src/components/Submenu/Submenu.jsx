@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 import { closeSidebar } from '../../modules/Sidebar'
 import { useDispatch } from 'react-redux'
 
-export default function Submenu({ msg }) {
+export default function Submenu({ deviceType }) {
     const location = useLocation()
     const dispatch = useDispatch()
     const handleLinkClick = e => {
@@ -13,7 +13,7 @@ export default function Submenu({ msg }) {
         }, 150)
     }
     return (
-        <div className={styles.submenu}>
+        <div className={`${styles.submenu} ${styles[deviceType]}`}>
             <Link to='/delivery' className={location.pathname === '/delivery' ? styles.active : undefined} onClick={handleLinkClick}>
                 Доставка
             </Link>
@@ -22,9 +22,6 @@ export default function Submenu({ msg }) {
             </Link>
             <Link to='/questions' className={location.pathname === '/questions' ? styles.active : undefined} onClick={handleLinkClick}>
                 F.A.Q.
-            </Link>
-            <Link to='/career' className={location.pathname === '/career' ? styles.active : undefined} onClick={handleLinkClick}>
-                Карьера
             </Link>
         </div>
     )

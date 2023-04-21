@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './styles.module.scss'
 
-export default function Credits() {
+export default function Credits({ deviceType }) {
     return (
-        <div className={styles.credits}>
+        <div className={`${styles.credits} ${styles[deviceType]}`}>
             {/* <p>mfdev</p> */}
             <div>
                 <a href='https://github.com/mfdevgit/pizza_market' target='_blanc'>

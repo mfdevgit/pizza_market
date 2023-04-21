@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import styles from './styles.module.scss'
+import DeliveryModule from '../modules/DeliveryModule/DeliveryModule'
 
 export default function Delivery({ title }) {
     return (
@@ -8,9 +8,7 @@ export default function Delivery({ title }) {
             <Helmet>
                 <title>{`${title} | mfdevMarket`}</title>
             </Helmet>
-            <div className={styles.delivery}>
-                <p>Информация о доставке и условиях заказа.</p>
-            </div>
+            <DeliveryModule />
         </>
     )
 }

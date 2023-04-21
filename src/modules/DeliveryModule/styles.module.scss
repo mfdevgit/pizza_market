@@ -1,0 +1,37 @@
+@import '/src/styles/variables.scss';
+
+.delivery {
+    > div {
+        & + div {
+            margin-top: 20px;
+        }
+        strong {
+            @include font($weight: bold);
+            display: block;
+            margin-bottom: 10px;
+            & + p {
+                margin-bottom: 10px;
+            }
+        }
+        p {
+            @include font;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin-top: 10px;
+            padding-left: 10px;
+            list-style: none;
+            li {
+                @include font;
+                padding-left: 27px;
+                background-image: url('./assets/images/list_marker.svg');
+                background-position: 0px 2px;
+                background-repeat: no-repeat;
+                background-size: 17px 17px;
+                & + li {
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

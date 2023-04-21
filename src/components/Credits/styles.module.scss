@@ -1,11 +1,14 @@
 @import '/src/styles/variables.scss';
 
 .credits {
-    position: absolute;
-    left: calc(50% - 45px);
-    bottom: 20px;
     width: max-content;
-    margin: 0 auto;
+    &.mobile {
+        position: absolute;
+        left: calc(50% - 45px);
+        bottom: 20px;
+    }
+    &.desktop {
+    }
     > div {
         a {
             display: inline-block;

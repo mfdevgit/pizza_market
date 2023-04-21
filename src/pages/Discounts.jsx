@@ -1,6 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import styles from './styles.module.scss'
+import DiscountsModule from '../modules/DiscountsModule/DiscountsModule'
 
 export default function Discounts({ title }) {
     return (
@@ -8,9 +8,7 @@ export default function Discounts({ title }) {
             <Helmet>
                 <title>{`${title} | mfdevMarket`}</title>
             </Helmet>
-            <div className={styles.discounts}>
-                <p>Информация об акциях.</p>
-            </div>
+            <DiscountsModule />
         </>
     )
 }

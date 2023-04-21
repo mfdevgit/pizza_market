@@ -13,8 +13,8 @@ export default function Sidebar() {
             <div ref={overlayRef} className={styles.overlay} onClick={handleSidebarClose} />
             <div ref={sidebarRef} className={styles.sidebar}>
                 <Categories deviceType='mobile' />
-                <Submenu />
-                <Credits />
+                <Submenu deviceType='mobile' />
+                <Credits deviceType='mobile' />
             </div>
         </>
     ) : null

@@ -16,7 +16,7 @@
 }
 
 .sidebar {
-    @include flex($direction: column, $align: center, $gap: 20px);
+    @include flex($direction: column, $align: center, $gap: 30px);
     position: fixed;
     z-index: 2;
     top: 0;

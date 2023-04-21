@@ -1,14 +1,26 @@
 @import '/src/styles/variables.scss';
 
 .submenu {
-    @include flex($direction: column, $align: center, $gap: 10px);
-    margin-top: 20px;
-    a {
-        @include font;
-        padding: 5px;
-        transition: all 150ms ease;
-        &.active {
-            color: $orange;
+    &.mobile {
+        @include flex($direction: column, $align: center, $gap: 10px);
+        a {
+            @include font;
+            padding: 5px;
+            transition: all 150ms ease;
+            &.active {
+                color: $orange;
+            }
+        }
+    }
+    &.desktop {
+        @include flex($align: center, $gap: 30px);
+        a {
+            @include font;
+            padding: 5px;
+            transition: all 150ms ease;
+            &.active {
+                color: $orange;
+            }
         }
     }
 }
