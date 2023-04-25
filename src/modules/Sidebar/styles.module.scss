@@ -41,3 +41,43 @@
         left: 0;
     }
 }
+
+.navigation {
+    @include flex($wrap: wrap, $justify: center, $gap: 20px);
+    a {
+        @include flex($direction: column, $align: center, $gap: 20px);
+        width: calc((100% - 20px) / 2);
+        padding: 10px;
+        transition: all 150ms ease;
+        text-decoration: none;
+        span {
+            @include font($align: center);
+            display: block;
+        }
+        img {
+            width: 50px;
+            margin: 0 auto;
+        }
+        &:hover,
+        &.active {
+            span {
+                color: $orange;
+            }
+        }
+    }
+}
+
+.subnavigation {
+    @include flex($wrap: wrap, $justify: center, $gap: 20px);
+    a {
+        @include font($align: center);
+        width: 100%;
+        padding: 10px;
+        transition: all 150ms ease;
+        text-decoration: none;
+        &:hover,
+        &.active {
+            color: $orange;
+        }
+    }
+}

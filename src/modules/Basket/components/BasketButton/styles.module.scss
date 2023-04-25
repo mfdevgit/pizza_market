@@ -31,21 +31,30 @@
         }
     }
     &.desktop {
-        @include flex($justify: center, $align: center, $gap: 10px);
-        padding: 10px 15px;
-        background-color: $orange;
+        padding: 10px;
+        height: 60px;
+        border-radius: 30px;
         border: none;
         outline: none;
-        border-radius: 5px;
-        cursor: pointer;
-        svg {
-            width: 20px;
-            path {
-                fill: $gray;
+        background-color: $gray;
+        div {
+            @include flex($justify: center, $align: center, $gap: 10px);
+            padding: 10px;
+            height: 40px;
+            background-color: $orange;
+            border: none;
+            outline: none;
+            border-radius: 20px;
+            cursor: pointer;
+            svg {
+                width: 20px;
+                path {
+                    fill: $gray;
+                }
             }
-        }
-        span {
-            @include font($color: $white, $size: 14px);
+            span {
+                @include font($color: $white, $size: 14px);
+            }
         }
     }
 }

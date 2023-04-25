@@ -1,5 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Main from './pages/Main'
 import Products from './pages/Products'
 import Delivery from './pages/Delivery'
 import Discounts from './pages/Discounts'
@@ -22,7 +23,7 @@ export default function App() {
             <main className={deviceType}>
                 <div className='wrapper'>
                     <Routes>
-                        <Route path='/' />
+                        <Route path='/' element={<Main title='Главная' />} />
                         <Route path='/pizzas' element={<Products title='Пиццы' category='pizzas' />} />
                         <Route path='/snacks' element={<Products title='Закуски' category='snacks' />} />
                         <Route path='/desserts' element={<Products title='Десерты' category='desserts' />} />

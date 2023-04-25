@@ -19,7 +19,7 @@ export default function BasketInfo() {
             ) : (
                 <>
                     <BasketStats title='Товары' data={products} />
-                    <BasketStats title='Товары' data={`${price} ₽`} />
+                    <BasketStats title='Сумма' data={`${price} ₽`} />
                 </>
             )}
             <button>Оформить заказ</button>

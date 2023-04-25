@@ -1,0 +1,11 @@
+@import '/src/styles/variables.scss';
+
+.main {
+    @include flex($direction: column, $gap: 10px);
+    h3 {
+        @include font($weight: bold);
+    }
+    p {
+        @include font($size: 14px);
+    }
+}

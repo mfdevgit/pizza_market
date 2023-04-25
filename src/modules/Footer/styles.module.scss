@@ -7,7 +7,7 @@ footer {
         padding: 30px;
         background-color: $gray;
         .wrapper {
-            @include flex($justify: space-between, $align: center, $gap: 30px);
+            @include flex($justify: center, $align: center, $gap: 30px);
             width: 950px;
             margin: 0 auto;
         }
