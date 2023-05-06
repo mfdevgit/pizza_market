@@ -10,6 +10,25 @@
     span {
         @include font;
         float: right;
+        &.new {
+            position: relative;
+            padding-right: 34px;
+            cursor: pointer;
+            &::after {
+                @include font($color: $white, $size: 14px, $align: center);
+                content: '?';
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 20px;
+                height: 20px;
+                padding: 2px;
+                border-radius: 50%;
+                background-color: $orange;
+            }
+            &:hover {
+            }
+        }
         &.old {
             color: $gray_darker;
             position: relative;

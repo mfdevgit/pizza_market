@@ -1,12 +1,13 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setIsSidebarOpen } from '../../../../redux/slices/settings'
+import { useDispatch, useSelector } from 'react-redux'
+import { toggleSidebar } from './helpers/sidebarButtonHelper'
 import styles from './styles.module.scss'
 
 export default function SidebarButton() {
+    const { isBasketOpen, isSidebarOpen } = useSelector(state => state.settings)
     const dispatch = useDispatch()
     const handleSidebarBtnClick = () => {
-        dispatch(setIsSidebarOpen(true))
+        toggleSidebar({ dispatch, isSidebarOpen, isBasketOpen })
     }
 
     return (

@@ -7,7 +7,7 @@ export default function BasketStats({ title, data }) {
             <strong>{title}</strong>
             {Array.isArray(data) ? (
                 <>
-                    <span>{data[0]}</span>
+                    <span className={styles.new}>{data[0]}</span>
                     <span className={styles.old}>{data[1]}</span>
                 </>
             ) : (

@@ -1,13 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { openBasket } from '../../index'
+import { toggleBasket } from './helpers/basketButtonHelper'
 import styles from './styles.module.scss'
 
 export default function BasketButton({ deviceType }) {
     const { products, price, discount } = useSelector(state => state.basket.total)
+    const { isBasketOpen, isSidebarOpen } = useSelector(state => state.settings)
     const dispatch = useDispatch()
     const handleBasketBtnClick = () => {
-        openBasket(dispatch)
+        toggleBasket({ dispatch, isBasketOpen, isSidebarOpen })
     }
 
     const hasProducts = products > 0

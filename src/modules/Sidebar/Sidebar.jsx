@@ -1,61 +1,54 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Credits from '../../components/Credits/Credits'
-import useSidebar from './hooks/useSidebar'
+import { setIsSidebarOpen } from '../../redux/slices/settings'
 import styles from './styles.module.scss'
-import { useDispatch } from 'react-redux'
-import closeSidebar from './utils/closeSidebar'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function Sidebar() {
-    const dispatch = useDispatch()
     const location = useLocation()
-    const { overlayRef, sidebarRef, isSidebarOpen, handleSidebarClose } = useSidebar()
+    const dispatch = useDispatch()
+    const isSidebarOpen = useSelector(state => state.settings.isSidebarOpen)
 
-    const handleLinkClick = e => {
-        const element = e.currentTarget
-        if (element) {
-            element.classList.add(styles.clicked)
-            setTimeout(() => {
-                closeSidebar(dispatch)
-            }, 150)
-        }
+    const handleCloseSidebar = () => {
+        dispatch(setIsSidebarOpen(!isSidebarOpen))
     }
 
-    return isSidebarOpen ? (
+    return (
         <>
-            <div ref={overlayRef} className={styles.overlay} onClick={handleSidebarClose} />
-            <div ref={sidebarRef} className={styles.sidebar}>
+            <div className={isSidebarOpen ? styles.overlay : `${styles.overlay} ${styles.closed}`} onClick={handleCloseSidebar} />
+            <div className={isSidebarOpen ? styles.sidebar : `${styles.sidebar} ${styles.closed}`}>
                 <div className={styles.navigation}>
-                    <Link to='/pizzas' className={location.pathname === '/pizzas' && styles.active} onClick={handleLinkClick}>
+                    <Link to='/pizzas' className={location.pathname === '/pizzas' && styles.active} onClick={handleCloseSidebar}>
                         <img src='/images/categories/pizza.png' alt='картинка' />
                         <span>Пиццы</span>
                     </Link>
-                    <Link to='/snacks' className={location.pathname === '/snacks' && styles.active} onClick={handleLinkClick}>
+                    <Link to='/snacks' className={location.pathname === '/snacks' && styles.active} onClick={handleCloseSidebar}>
                         <img src='/images/categories/snack.png' alt='картинка' />
                         <span>Закуски</span>
                     </Link>
-                    <Link to='/desserts' className={location.pathname === '/desserts' && styles.active} onClick={handleLinkClick}>
+                    <Link to='/desserts' className={location.pathname === '/desserts' && styles.active} onClick={handleCloseSidebar}>
                         <img src='/images/categories/dessert.png' alt='картинка' />
                         <span>Десерты</span>
                     </Link>
-                    <Link to='/drinks' className={location.pathname === '/drinks' && styles.active} onClick={handleLinkClick}>
+                    <Link to='/drinks' className={location.pathname === '/drinks' && styles.active} onClick={handleCloseSidebar}>
                         <img src='/images/categories/drink.png' alt='картинка' />
                         <span>Напитки</span>
                     </Link>
                 </div>
                 <div className={styles.subnavigation}>
-                    <Link to='/delivery' className={location.pathname === '/delivery' && styles.active} onClick={handleLinkClick}>
+                    <Link to='/delivery' className={location.pathname === '/delivery' && styles.active} onClick={handleCloseSidebar}>
                         Доставка
                     </Link>
-                    <Link to='/discounts' className={location.pathname === '/discounts' && styles.active} onClick={handleLinkClick}>
+                    <Link to='/discounts' className={location.pathname === '/discounts' && styles.active} onClick={handleCloseSidebar}>
                         Акции
                     </Link>
-                    <Link to='/questions' className={location.pathname === '/questions' && styles.active} onClick={handleLinkClick}>
+                    <Link to='/questions' className={location.pathname === '/questions' && styles.active} onClick={handleCloseSidebar}>
                         F.A.Q.
                     </Link>
                 </div>
                 <Credits deviceType='mobile' />
             </div>
         </>
-    ) : null
+    )
 }
