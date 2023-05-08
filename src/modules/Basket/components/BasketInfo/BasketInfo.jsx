@@ -6,23 +6,18 @@ import styles from './styles.module.scss'
 
 export default function BasketInfo() {
     const { products, price, discount } = useSelector(state => state.basket.total)
+    const [minTotalPrice, minFreeShipping] = [800, 1500]
 
     return (
         <div className={styles.basket_info}>
             <BasketDiscount />
-            {discount.status === 'loaded' ? (
-                <>
-                    <BasketStats title='Товары' data={products} />
-                    <BasketStats title='Скидка' data={`${discount.data.tech.ratio}%`} />
-                    <BasketStats title='Сумма' data={[`${discount.price} ₽`, `${price} ₽`]} />
-                </>
-            ) : (
-                <>
-                    <BasketStats title='Товары' data={products} />
-                    <BasketStats title='Сумма' data={`${price} ₽`} />
-                </>
-            )}
+            <BasketStats title='Товары' data={['totalProducts', products]} />
+            <BasketStats title='Сумма' data={['totalPrice', price, discount.price]} />
+            {price < minTotalPrice && <BasketStats title='Миним. заказ' data={['minTotalPrice', minTotalPrice]} />}
+            {price < minFreeShipping && <BasketStats title='Беспл. доставка' data={['minFreeShipping', minFreeShipping]} />}
             <button>Оформить заказ</button>
         </div>
     )
 }
+
+// ₽
