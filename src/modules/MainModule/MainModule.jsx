@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Loader from '../../components/Loader/Loader'
 import styles from './styles.module.scss'
 
 export default function MainModule() {
-    return (
+    const [isLoading, setIsLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 800)
+    }, [])
+
+    return isLoading ? (
+        <Loader />
+    ) : (
         <div className={styles.main}>
             <h3>Вступление</h3>
             <p>

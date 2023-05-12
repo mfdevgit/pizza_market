@@ -5,11 +5,11 @@ const basketSlice = createSlice({
     name: 'basket',
     initialState: {
         data: [],
-        total: { products: 0, price: 0, discount: { data: false, status: 'loading' } }
+        discount: { data: false, status: 'loading' },
+        total: { products: 0, price: 0 }
     },
     reducers: {
         addProduct: (state, action) => {
-            console.log(action.payload)
             const index = findProductIndex(state.data, action.payload)
             if (index !== -1) {
                 state.data[index].count += 1
@@ -41,15 +41,15 @@ const basketSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(fetchDiscount.pending, state => {
-                state.total.discount.status = 'loading'
+                state.discount.status = 'loading'
             })
             .addCase(fetchDiscount.fulfilled, (state, action) => {
-                state.total.discount.data = action.payload
-                state.total.discount.status = 'loaded'
+                state.discount.data = action.payload
+                state.discount.status = 'loaded'
                 updateDiscountedPrice(state)
             })
             .addCase(fetchDiscount.rejected, state => {
-                state.total.discount.status = 'rejected'
+                state.discount.status = 'rejected'
             })
     }
 })
@@ -65,13 +65,13 @@ const findProductIndex = (data, payload) => {
 const updateTotal = state => {
     state.total.price = state.data.reduce((sum, el) => sum + el.price * el.count, 0)
     state.total.products = state.data.reduce((sum, el) => sum + el.count, 0)
-    if (state.total.discount.status === 'loaded') {
+    if (state.discount.status === 'loaded') {
         updateDiscountedPrice(state)
     }
 }
 
 const updateDiscountedPrice = state => {
-    const { price, discount } = state.total
+    const [price, discount] = [state.total.price, state.discount]
 
     // eslint-disable-next-line
     switch (discount.data.tech.type) {

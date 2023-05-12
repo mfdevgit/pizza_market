@@ -6,16 +6,32 @@
         & + div {
             margin-top: 20px;
         }
-        h3 {
-            @include font($size: 16px);
+        .header {
+            @include flex($gap: 10px);
             cursor: pointer;
+            svg {
+                flex: 0 0 24px;
+                fill: $orange_lighter;
+                transition: all 300ms ease;
+            }
+            h3 {
+                @include font;
+                flex-grow: 1;
+            }
+            &.open {
+                svg {
+                    fill: $orange;
+                    transform: rotate(180deg);
+                }
+            }
         }
-        > div {
+        .content {
             @include flex($direction: column, $gap: 10px);
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 10px;
+            padding: 10px;
             border-radius: 5px;
             background-color: $gray;
+            transition: all 300ms ease;
             &.closed {
                 display: none;
             }

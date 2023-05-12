@@ -10,7 +10,7 @@ export default function ProductAdding({ price, handleAddToCart }) {
         addingRef.current.classList.add(styles.clicked)
         setTimeout(() => {
             addingRef.current.classList.remove(styles.clicked)
-        }, 300)
+        }, 150)
     }
 
     return (

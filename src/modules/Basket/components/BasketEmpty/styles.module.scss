@@ -4,14 +4,18 @@
     align-self: center;
     width: 100%;
     svg {
-        width: 60%;
-        margin: 0 20%;
+        display: block;
+        width: 180px;
+        margin: 0 auto;
         path {
             fill: $white;
         }
     }
     p {
         @include font($size: 14px, $align: center);
-        margin-top: 20px;
+        display: block;
+        width: 100%;
+        max-width: 250px;
+        margin: 20px auto 0 auto;
     }
 }

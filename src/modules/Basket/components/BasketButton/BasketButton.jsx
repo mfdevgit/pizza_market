@@ -4,7 +4,8 @@ import { toggleBasket } from './helpers/basketButtonHelper'
 import styles from './styles.module.scss'
 
 export default function BasketButton({ deviceType }) {
-    const { products, price, discount } = useSelector(state => state.basket.total)
+    const { products, price } = useSelector(state => state.basket.total)
+    const discount = useSelector(state => state.basket.discount)
     const { isBasketOpen, isSidebarOpen } = useSelector(state => state.settings)
     const dispatch = useDispatch()
     const handleBasketBtnClick = () => {

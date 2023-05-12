@@ -3,55 +3,72 @@
 .discounts {
     width: 100%;
     &.mobile {
-        > .discount_cart {
-            width: 100%;
-            & + div {
-                margin-top: 30px;
+        .discount_cart {
+            @include flex($direction: column, $gap: 20px);
+            > div {
+                width: 100%;
             }
         }
     }
     &.desktop {
-        > .discount_cart {
-            width: 100%;
-            @include flex($direction: row, $gap: 20px);
-            div {
-                &:first-child {
-                    flex: 0 1 280px;
-                }
-                &:last-child {
-                    flex: 1 0 280px;
-                }
+        .discount_cart {
+            &:nth-child(odd) {
+                @include flex($direction: row, $justify: center, $align: center, $gap: 20px);
             }
-            & + div {
-                margin-top: 40px;
+            &:nth-child(even) {
+                @include flex($direction: row-reverse, $justify: center, $align: center, $gap: 20px);
+            }
+            > div {
+                width: 50%;
             }
         }
     }
-    img {
+    .discount_cart {
         width: 100%;
-        border-radius: 5px;
-        margin-bottom: 15px;
+        opacity: 1;
+        transition: all 1s ease;
+        &.not_loaded {
+            opacity: 0;
+        }
+        &:not(:last-child) {
+            margin-bottom: 30px;
+        }
     }
-    h3 {
-        @include font($weight: bold);
-        margin-bottom: 10px;
-    }
-    p {
-        @include font($size: 14px);
-    }
-    ul {
-        margin-top: 10px;
-        padding-left: 10px;
-        list-style: none;
-        li {
-            @include font($size: 14px);
-            padding-left: 27px;
-            background-image: url('./assets/images/list_marker.svg');
-            background-position: 0px 2px;
-            background-repeat: no-repeat;
-            background-size: 17px 17px;
-            & + li {
-                margin-top: 10px;
+    div {
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        h3 {
+            @include font($weight: bold, $align: center);
+            @media screen and (min-width: 800px) {
+                max-width: 400px;
+            }
+            margin-bottom: 10px;
+        }
+        p {
+            @include font($size: 14px, $align: center);
+            @media screen and (min-width: 800px) {
+                max-width: 400px;
+            }
+        }
+        ul {
+            margin-top: 10px;
+            list-style: none;
+            @media screen and (min-width: 800px) {
+                max-width: 400px;
+                margin: 10px auto 0 auto;
+            }
+            li {
+                @include font($size: 14px);
+                padding-left: 27px;
+                background-image: url('./assets/images/list_marker.svg');
+                background-position: 0px 2px;
+                background-repeat: no-repeat;
+                background-size: 17px 17px;
+                & + li {
+                    margin-top: 10px;
+                }
             }
         }
     }

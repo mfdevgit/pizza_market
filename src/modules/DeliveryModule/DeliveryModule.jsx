@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Loader from '../../components/Loader/Loader'
 import styles from './styles.module.scss'
 
 export default function DeliveryModule() {
-    return (
+    const [isLoading, setIsLoading] = useState(true)
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false)
+        }, 800)
+    }, [])
+
+    return isLoading ? (
+        <Loader />
+    ) : (
         <div className={styles.delivery}>
             <div>
                 <strong>Условия доставки</strong>
@@ -15,10 +25,10 @@ export default function DeliveryModule() {
             </div>
             <div>
                 <strong>Стоимость доставки</strong>
-                <p>Стоимость доставки зависит от суммы вашего заказа. Всего есть два варианта:</p>
+                <p>Стоимость доставки зависит от суммы вашего заказа. Есть два варианта:</p>
                 <ul>
-                    <li>300 рублей при заказе до 1000 рублей</li>
-                    <li>бесплатно при заказе от 1000 рублей (включительно)</li>
+                    <li>300 рублей при заказе до 800 рублей</li>
+                    <li>бесплатно при заказе от 1500 рублей (включительно)</li>
                 </ul>
             </div>
         </div>
